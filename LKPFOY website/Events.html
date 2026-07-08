@@ -1,0 +1,280 @@
+<html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <meta name="google-site-verification" content="JhK6RtlGyfnHD62UXInr5tZQNyJxKoUBSgnlAKGbaUg"/>
+        <title>LKPFOY</title>
+        <!-- Favicon-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+
+  <!-- Custom fonts for thsis template-->
+  <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet">
+  <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet">
+    </head>
+    <script>
+const monthYear = document.getElementById('monthYear');
+const calendarDays = document.getElementById('calendarDays');
+
+let currentDate = new Date();
+
+/* Add your event dates here */
+const events = {
+    '2026-07-15': {
+        title: 'Youth Prayer Service',
+        venue: 'LKP Presbytery Hall',
+        time: '18:00'
+    },
+
+    '2026-07-26': {
+        title: 'Choir Festival',
+        venue: 'Mamelodi Congregation',
+        time: '09:00'
+    },
+
+    '2026-08-09': {
+        title: 'Women\'s Day Celebration',
+        venue: 'Pretoria Central',
+        time: '10:00'
+    },
+
+    '2026-12-25': {
+        title: 'Christmas Service',
+        venue: 'Main Sanctuary',
+        time: '09:30'
+    }
+};
+
+function renderCalendar() {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+
+    monthYear.textContent =
+        currentDate.toLocaleString('default', {
+            month: 'long',
+            year: 'numeric'
+        });
+
+    calendarDays.innerHTML = '';
+
+    const firstDay =
+        new Date(year, month, 1).getDay();
+
+    const lastDate =
+        new Date(year, month + 1, 0).getDate();
+
+    for (let i = 0; i < firstDay; i++) {
+        calendarDays.innerHTML += '<div></div>';
+    }
+
+    for (let day = 1; day <= lastDate; day++) {
+        const cell = document.createElement('div');
+        cell.textContent = day;
+
+        const dateString =
+            `${year}-${String(month + 1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+
+        const today = new Date();
+
+        if (
+            day === today.getDate() &&
+            month === today.getMonth() &&
+            year === today.getFullYear()
+        ) {
+            cell.classList.add('today');
+        }
+
+        if (events[dateString]) {
+    cell.classList.add('event');
+
+    cell.addEventListener('click', function () {
+        showEvent(dateString);
+    });
+}
+
+        calendarDays.appendChild(cell);
+    }
+}
+
+document.getElementById('prevMonth')
+.addEventListener('click', () => {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    renderCalendar();
+});
+
+document.getElementById('nextMonth')
+.addEventListener('click', () => {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    renderCalendar();
+});
+
+renderCalendar();
+</script>
+    <body bgcolor=#F8F1E5>
+        <img src="images/watermark.png" class="watermark" alt="">
+        <header class="site-header">
+            <img src="images/header.jpeg" alt="foy header" width="100%">
+            <table width="100%" bgcolor=#001E44 class="nav-table">
+                <tr>
+                    <td><font color="white"><center><a href="index.html">Home</a></center></font></td>
+                    <td><font color="white"><center><a href="About.html">About Us</a></center></font></td>
+                    <td><font color="white"><center><a href="Events.html">Events</a></center></font></td>
+                    <td><font color="white"><center><a href="Regalia.html">Regalia</a></center></font></td>
+                    <td><font color="white"><center><a href="Gallery.html">Gallery</a></center></font></td>
+                    <td><font color="white"><center><a href="Contacts.html">Contacts</a></center></font></td>
+                </tr>
+            </table>
+    </div>
+</header>
+<div class="calendar-container">
+    <div class="calendar-header">
+        <button id="prevMonth">&#10094;</button>
+        <h2 id="monthYear"></h2>
+        <button id="nextMonth">&#10095;</button>
+    </div>
+
+    <div class="calendar-weekdays">
+        <div>Sun</div>
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+    </div>
+
+    <div class="calendar-days" id="calendarDays"></div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const monthYear = document.getElementById('monthYear');
+    const calendarDays = document.getElementById('calendarDays');
+    const eventInfo = document.getElementById('eventInfo');
+
+    let currentDate = new Date();
+
+    const events = {
+        '2026-07-15': {
+            title: 'Youth Prayer Service',
+            venue: 'LKP Presbytery Hall',
+            time: '18:00',
+            description: 'An evening of worship and prayer.'
+        },
+
+        '2026-07-26': {
+            title: 'Choir Festival',
+            venue: 'Mamelodi Congregation',
+            time: '09:00',
+            description: 'Presbytery choir celebration and fellowship.'
+        },
+
+        '2026-08-09': {
+            title: 'Women\'s Day Celebration',
+            venue: 'Pretoria Central',
+            time: '10:00',
+            description: 'Celebrating the contribution of women in the church.'
+        },
+
+        '2026-12-25': {
+            title: 'Christmas Service',
+            venue: 'Main Sanctuary',
+            time: '09:30',
+            description: 'Christmas Day worship service.'
+        }
+    };
+
+    function showEvent(dateString) {
+        const event = events[dateString];
+
+        eventInfo.innerHTML = `
+            <h3>${event.title}</h3>
+            <p><strong>Date:</strong> ${dateString}</p>
+            <p><strong>Time:</strong> ${event.time}</p>
+            <p><strong>Venue:</strong> ${event.venue}</p>
+            <p>${event.description}</p>
+        `;
+    }
+
+    function renderCalendar() {
+        calendarDays.innerHTML = '';
+
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+
+        monthYear.textContent =
+            currentDate.toLocaleString('en-US', {
+                month: 'long',
+                year: 'numeric'
+            });
+
+        const firstDay =
+            new Date(year, month, 1).getDay();
+
+        const daysInMonth =
+            new Date(year, month + 1, 0).getDate();
+
+        for (let i = 0; i < firstDay; i++) {
+            const blank = document.createElement('div');
+            calendarDays.appendChild(blank);
+        }
+
+        for (let day = 1; day <= daysInMonth; day++) {
+
+            const cell = document.createElement('div');
+            cell.textContent = day;
+
+            const dateString =
+                `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
+            const today = new Date();
+
+            if (
+                day === today.getDate() &&
+                month === today.getMonth() &&
+                year === today.getFullYear()
+            ) {
+                cell.classList.add('today');
+            }
+
+            if (events[dateString]) {
+                cell.classList.add('event');
+
+                cell.addEventListener('click', function () {
+                    showEvent(dateString);
+                });
+            }
+
+            calendarDays.appendChild(cell);
+        }
+    }
+
+    document.getElementById('prevMonth')
+        .addEventListener('click', function () {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        });
+
+    document.getElementById('nextMonth')
+        .addEventListener('click', function () {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        });
+
+    renderCalendar();
+});
+</script>
+<div id="eventInfo" class="event-info">
+    <h3>Select an event date</h3>
+    <p>Click on a highlighted date to view event details.</p>
+</div>
+    </body>
+</html>
