@@ -38,6 +38,16 @@
         </header>
         <center>
             <br/>
+            <div id="countdownRibbon" class="countdown-ribbon" style="display:none;">
+    <div id="eventName" class="event-name"></div>
+
+    <div class="countdown-timer">
+        <span id="days">00</span>D :
+        <span id="hours">00</span>H :
+        <span id="minutes">00</span>M :
+        <span id="seconds">00</span>S
+    </div>
+</div>
             <h3>
                 <u>UPCSA Fellowship of Youth Vision</u>
             </h3>
@@ -63,5 +73,128 @@
             <li>Engage the Youth at all levels within the UPCSA in planning and executing youth programmes.</li>
         </ul>
         <center><hr width="70%" color=#001E44 size="15"/></center>
+        <script>
+const events = {
+    '2026-07-26T09:00:00': {
+        title: 'Choir Festival'
+    },
+
+    '2026-08-09T10:00:00': {
+        title: 'Women\'s Day Celebration'
+    },
+
+    '2026-12-25T09:30:00': {
+        title: 'Christmas Service'
+    }
+};
+
+function startCountdown() {
+
+    const ribbon =
+        document.getElementById('countdownRibbon');
+
+    const eventName =
+        document.getElementById('eventName');
+
+    const today = new Date();
+
+    let nearestDate = null;
+    let nearestEvent = null;
+
+    for (const date in events) {
+
+        const eventDate = new Date(date);
+
+        const diff =
+            eventDate.getTime() -
+            today.getTime();
+
+        const sevenDays =
+            7 * 24 * 60 * 60 * 1000;
+
+        if (
+            diff > 0 &&
+            diff <= sevenDays
+        ) {
+            if (
+                nearestDate === null ||
+                eventDate < nearestDate
+            ) {
+                nearestDate = eventDate;
+                nearestEvent = events[date];
+            }
+        }
+    }
+
+    if (!nearestDate) {
+        ribbon.style.display = 'none';
+        return;
+    }
+
+    ribbon.style.display = 'block';
+    eventName.innerHTML =
+        nearestEvent.title;
+
+    setInterval(function () {
+
+        const now = new Date();
+        const distance =
+            nearestDate.getTime() -
+            now.getTime();
+
+        if (distance <= 0) {
+            ribbon.style.display = 'none';
+            location.reload();
+            return;
+        }
+
+        const days =
+            Math.floor(
+                distance /
+                (1000 * 60 * 60 * 24)
+            );
+
+        const hours =
+            Math.floor(
+                (distance %
+                    (1000 * 60 * 60 * 24)) /
+                (1000 * 60 * 60)
+            );
+
+        const minutes =
+            Math.floor(
+                (distance %
+                    (1000 * 60 * 60)) /
+                (1000 * 60)
+            );
+
+        const seconds =
+            Math.floor(
+                (distance %
+                    (1000 * 60)) /
+                1000
+            );
+
+        document.getElementById('days')
+            .innerHTML =
+            String(days).padStart(2, '0');
+
+        document.getElementById('hours')
+            .innerHTML =
+            String(hours).padStart(2, '0');
+
+        document.getElementById('minutes')
+            .innerHTML =
+            String(minutes).padStart(2, '0');
+
+        document.getElementById('seconds')
+            .innerHTML =
+            String(seconds).padStart(2, '0');
+
+    }, 1000);
+}
+
+startCountdown();
+</script>
     </body>
 </html>
