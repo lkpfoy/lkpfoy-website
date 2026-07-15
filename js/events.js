@@ -5,6 +5,12 @@ const events = {
         description: 'An evening of worship and prayer.'
     },
 
+    '2026-07-20T18:00:00': {
+        title: 'Youth Prayer Service',
+        venue: 'tester',
+        description: 'An evening of worship and prayer.'
+    },
+    
     '2026-08-01T09:00:00': {
         title: 'Senate Meeting',
         venue: 'Mamelodi Congregation',
