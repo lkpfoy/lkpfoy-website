@@ -39,15 +39,38 @@
         </header>
         <center>
             <br/>
-            <div id="countdownRibbon" class="countdown-ribbon" style="display:none;">
-    <div id="eventName" class="event-name"></div>
+            <div id="countdownContainer" class="countdown-container" style="display:none;">
 
-    <div class="countdown-timer">
-        <span id="days">00</span>D :
-        <span id="hours">00</span>H :
-        <span id="minutes">00</span>M :
-        <span id="seconds">00</span>S
+    <h2 id="eventTitle" class="event-title">
+        Upcoming Event
+    </h2>
+
+    <div class="countdown">
+
+        <div class="time-box">
+            <div class="number" id="days">00</div>
+            <div class="label">Days</div>
+        </div>
+
+        <div class="time-box">
+            <div class="number" id="hours">00</div>
+            <div class="label">Hours</div>
+        </div>
+
+        <div class="time-box">
+            <div class="number" id="minutes">00</div>
+            <div class="label">Minutes</div>
+        </div>
+
+        <div class="time-box">
+            <div class="number" id="seconds">00</div>
+            <div class="label">Seconds</div>
+        </div>
+
     </div>
+
+    <div id="eventInfo" class="event-info"></div>
+
 </div>
             <h3>
                 <u>UPCSA Fellowship of Youth Vision</u>
