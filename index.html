@@ -168,6 +168,10 @@ function startCountdown() {
     ribbon.style.display = 'block';
     eventName.innerHTML =
         nearestEvent.title;
+    document.getElementById('eventInfo').innerHTML =
+    nearestDate.toLocaleDateString() +
+    ' • ' +
+    nearestEvent.venue;
 
     setInterval(function () {
 
