@@ -12314,3 +12314,54 @@ header a:hover {
     border: 3px solid #D4AF37;
     color: #C0392B;
 }
+
+.countdown-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    text-align: center;
+    background: #001E44;
+    border-top: 6px solid #D4AF37;
+    border-bottom: 6px solid #D4AF37;
+    border-radius: 15px;
+}
+
+.event-title {
+    color: #D4AF37;
+    margin-bottom: 30px;
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    background: white;
+    width: 130px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.2);
+}
+
+.number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #001E44;
+}
+
+.label {
+    color: #D4AF37;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.event-info {
+    color: white;
+    margin-top: 25px;
+    font-size: 1.1rem;
+}
